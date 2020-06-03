@@ -1,18 +1,298 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Arjavi Bahety</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script
+      src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Google fonts-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
   </head>
-  <body>
-    <div id="content">
-      <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
-      <div id="greeting-container"></div>
+  <body id="page-top">
+    <!-- Navigation-->
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top"
+      id="sideNav"
+    >
+      <a class="navbar-brand js-scroll-trigger" href="#page-top"
+        ><span class="d-block d-lg-none">Arjavi Bahety</span
+        ><span class="d-none d-lg-block"
+          ><img
+            class="img-fluid img-profile rounded-circle mx-auto mb-2"
+            src="assets/img/siaTheDog"
+            alt="" /></span></a
+      ><button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#projects"
+              >Projects</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#skills">Skills</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#interests"
+              >Interests</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- Page Content-->
+    <div class="container-fluid p-0">
+      <!-- About-->
+      <section class="resume-section" id="about">
+        <div class="resume-section-content">
+          <h1 class="mb-0">Arjavi<span class="text-primary"> Bahety</span></h1>
+          <div class="subheading mb-5">
+            <a href="mailto:arjavibahety@gmail.com">arjavibahety@gmail.com</a>
+          </div>
+          <p class="lead mb-5">
+            Hi there! I am a Year 2 Computer Science student at the National
+            University of Singapore. I am interested in Machine Learning and
+            Software Engineering. <br />
+            When I am not debugging, I can be found dancing, drawing portraits,
+            or going "awwww" over cute Instagram comics ^_^
+          </p>
+          <div class="social-icons">
+            <a
+              class="social-icon"
+              href="https://www.linkedin.com/in/arjavi-bahety/"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+            <a class="social-icon" href="https://github.com/arjavibahety"
+              ><i class="fab fa-github"></i
+            ></a>
+          </div>
+        </div>
+      </section>
+      <hr class="m-0" />
+
+      <!-- Projects -->
+      <section class="resume-section" id="projects">
+        <div class="resume-section-content">
+          <h2 class="mb-5">Projects</h2>
+          <div
+            class="d-flex flex-column flex-md-row justify-content-between mb-5"
+          >
+            <div class="flex-grow-1">
+              <h3 class="mb-0">YouTube Cat</h3>
+              <div class="subheading mb-3">
+                Featured at Google Developer Space January 2020 La Kopi
+              </div>
+              <p>
+                People usually have a love-hate relationship with YouTube. While
+                it provides a plethora of educational content, it can be a very
+                influencial source of distraction which results in a huge pile of homework
+                :( YouTube Cat is a Chrome browser productivity extension which
+                works on YouTube to block videos of selected categories. I
+                developed it with a schoolmate over the summer break as part of
+                NUS's independent software engineering module called "Orbital".
+                <br />
+                The full code can be found in the Github repository
+                <a href="https://github.com/dalisc/youtube-cat"> YouTube-cat</a>
+                <br />
+                More information about our talk at La Kopi can be found
+                <a
+                  href="https://events.withgoogle.com/la-kopi-web-technologies/"
+                >
+                  here.
+                </a>
+              </p>
+            </div>
+          </div>
+          <div
+            class="d-flex flex-column flex-md-row justify-content-between mb-5"
+          >
+            <div class="flex-grow-1">
+              <h3 class="mb-0">Circles.Hack 2019</h3>
+              <div class="subheading mb-3">
+                Most Innovative and Diversity & Inclusion in Technology Awards
+              </div>
+              <p>
+                Circles.Hack is a 8-day long virtual hackathon organized by
+                Circles.Life. My team developed a personalized recommendation
+                engine using collaborative and content-based filtering to
+                recommend various events and movies to user of Circles.Life.
+                <br />
+                The full code can be found in the Github repository
+                <a href="https://github.com/dalisc/O.Life">O.life</a>.
+                <br />
+                We were also featured on the
+                <a
+                  href="https://www.comp.nus.edu.sg/news/3143-2019-circles-hack/"
+                >
+                  NUS Computing website!
+                </a>
+              </p>
+            </div>
+          </div>
+          <div
+            class="d-flex flex-column flex-md-row justify-content-between mb-5"
+          >
+            <div class="flex-grow-1">
+              <h3 class="mb-0">Hackomania 2019</h3>
+              <div class="subheading mb-3">
+                Best Rakuten API ‘API Hack’ Award
+              </div>
+              <p>
+                I took part in HackOmania which is an annual 24-hour hackathon
+                organized by the GeeksHacking Community in Singapore. Rakuten
+                API challenged hackathon participants to use their APIs to
+                address the problem statements. My team decided to work on a
+                mobile application which gamifies the way diabetic patients keep
+                track of their food intake. As the backend engineer, I connected
+                the frontend to the various Rakuten APIs and used Firebase to
+                store the user data. We managed to win the First Prize in the
+                RakutenAPI “API Hack” category. It was my first-time using C#
+                and Unity to make API calls and it was a truly enriching
+                experience.
+                <br />
+                The full code can be found on our Github repository
+                <a href="https://github.com/chrisjwelly/pokkamon"
+                  >"Pokkamon"
+                </a>
+                <br />
+                You can read more about the app 
+                <a href="https://blog.api.rakuten.net/developer-showcase-pokkapet/?fbclid=IwAR00oTK4bcu7ZFTo0Ih1mKABTq0gC4dWdhaX0MWGEMSG-yPi2Xc2F6jePhA"
+                > here. </a>
+              </p>
+            </div>
+          </div>
+          <div class="d-flex flex-column flex-md-row justify-content-between">
+            <div class="flex-grow-1">
+              <h3 class="mb-0">MRT Game</h3>
+              <div class="subheading mb-3">First hackathon!</div>
+              <p>
+                I took part in "HacknRoll" - an annual 24 hour hackathon
+                organised by NUS Hackers. We all take the MRT. It's a ubiquitous
+                part of Singaporean culture. The MRT is a hotchpotch of
+                Singaporean diversity. The story of the MRT is one of culture
+                and public etiquette. The objective of this game is to get a
+                seat on the MRT before everyone else does! It portrays
+                Singapore's hectic lifestyle too. I worked on the movement of
+                the player using python and object-oriented programming. I also
+                helped in coding the movement of the NPCs as well as combining
+                the code contributed by my team members. <br />
+                The full code can be found in the repository
+                <a href="https://github.com/arjavibahety/MRTgame">"MRTgame" </a>
+                <br />
+                Our Devpost can be found
+                <a href="https://devpost.com/software/ee-mrtgame-ou0vke"
+                  >here.</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <hr class="m-0" />
+
+      <!-- Skills-->
+      <section class="resume-section" id="skills">
+        <div class="resume-section-content">
+          <h2 class="mb-5">Skills</h2>
+          <div class="subheading mb-3">Programming Languages & Tools</div>
+          <ul class="list-inline dev-icons">
+            <li class="list-inline-item"><i class="fab fa-java"></i></li>
+            <li class="list-inline-item"><i class="fab fa-python"></i></li>
+            <li class="list-inline-item"><i class="fab fa-html5"></i></li>
+            <li class="list-inline-item"><i class="fab fa-css3-alt"></i></li>
+            <li class="list-inline-item"><i class="fab fa-js-square"></i></li>
+            <li class="list-inline-item"><i class="fab fa-react"></i></li>
+            <li class="list-inline-item"><i class="fab fa-unity"></i></li>
+          </ul>
+        </div>
+      </section>
+      <hr class="m-0" />
+      <!-- Interests-->
+      <section class="resume-section" id="interests">
+        <div class="resume-section-content">
+          <h2 class="mb-5">Interests</h2>
+          <p>
+            Apart from Computer Science, I really enjoy dancing. I picked up the
+            Indian classical dance- Bharatanatyam- when I joined NUS. It allows
+            me to stay connected to my roots. 
+            Dancing is like meditation to me as it requires intense focus and discipline. 
+            It may be surprising to know how logical and mathematical a dance form can be - not too far off from CS!
+          </p>
+          <p class="mb-0">
+            Recently, I picked up sketching portraits. I love drawing portraits
+            of famous actors! As I am still a beginner, I redraw sketches done
+            by other artists- copying one stroke at a time! Hopefully, one day I
+            don't need to refer to other's drawings :") Here are some of my
+            latest drawings!
+          </p>
+
+          <div class="image-gallery">
+            <div class="image-gallery-item">
+              <img
+                class="img-fluid rounded float-left gallery-img"
+                src="assets/img/docStrange"
+                alt=""
+              />
+            </div>
+            <div class="image-gallery-item">
+              <img
+                class="img-fluid rounded float-left gallery-img"
+                src="assets/img/devsena"
+                alt=""
+              />
+            </div>
+            <div class="image-gallery-item">
+              <img
+                class="img-fluid rounded float-left gallery-img"
+                src="assets/img/professor"
+                alt=""
+              />
+            </div>
+          </ul>
+        </div>
+      </section>
+      <hr class="m-0" />
     </div>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Third party plugin JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
   </body>
 </html>
