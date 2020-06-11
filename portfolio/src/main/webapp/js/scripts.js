@@ -52,13 +52,12 @@ async function getData() {
     const responseLstElem = document.getElementById('greeting-container');
     responseLstElem.innerHTML = '';
     for (let key of Object.keys(responseJson)) {
-        console.log(key + " -> " + responseJson[key]);
         responseLstElem.appendChild(
         createParaElement(responseJson[key]));
     }
 }
 
-/** Creates an <li> element containing text. */
+/** Creates an <p> element containing text. */
 function createParaElement(text) {
   const paraElement = document.createElement('p');
   paraElement.innerText = text;
