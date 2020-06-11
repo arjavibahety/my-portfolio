@@ -47,5 +47,7 @@
 async function getData() {
     const response = await fetch('/data');
     const responseText = await response.text();
-    document.getElementById('greeting-container').innerHTML = responseText;
+    console.log(response);
+    console.log(responseText);
+    document.getElementById('comments-container').innerHTML = responseText;
 }
