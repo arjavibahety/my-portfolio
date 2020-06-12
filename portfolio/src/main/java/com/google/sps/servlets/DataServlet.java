@@ -37,9 +37,6 @@ public class DataServlet extends HttpServlet {
     String comment = getParameter(request, "comment-input", "");
     comments.add(comment);    
     response.sendRedirect("/index.html");
-
-    // response.setContentType("application/json;");
-    // response.getWriter().println(json);
   }
 
   /**
