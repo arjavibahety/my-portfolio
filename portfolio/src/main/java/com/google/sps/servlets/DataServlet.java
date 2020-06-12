@@ -24,7 +24,8 @@ import java.util.ArrayList;
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
-    ArrayList<String> comments = new ArrayList<>();
+  ArrayList<String> comments = new ArrayList<>();
+  private static final String COMMENT_INPUT = "comment-input";
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -34,7 +35,7 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String comment = getParameter(request, "comment-input", "");
+    String comment = getParameter(request, COMMENT_INPUT, "");
     comments.add(comment);    
     response.sendRedirect("/index.html");
   }
