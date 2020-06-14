@@ -46,6 +46,13 @@
 
 async function getData() {
     const response = await fetch('/data');
-    const responseText = await response.text();
-    document.getElementById('greeting-container').innerHTML = responseText;
+    const responseJson = await response.json();
+    const commentsContainer = document.getElementById("comments-container");
+    
+    for (let i = 0; i < responseJson.length; i++) {
+        const newComment = document.createElement('p');
+        newComment.innerHTML = responseJson[i].comment;
+        commentsContainer.appendChild(newComment)
+    }
+
 }
