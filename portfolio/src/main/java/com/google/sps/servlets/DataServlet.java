@@ -34,7 +34,8 @@ import java.util.ArrayList;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
   private static final String COMMENT_INPUT = "comment-input";
-  private DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+  private static DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+  private static Gson gson = new Gson();
   
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -51,8 +52,6 @@ public class DataServlet extends HttpServlet {
       Comment commentObj = new Comment(id, comment, timestamp);
       comments.add(commentObj);
     }
-
-    Gson gson = new Gson();
 
     response.setContentType("application/json;");
     response.getWriter().println(gson.toJson(comments));
