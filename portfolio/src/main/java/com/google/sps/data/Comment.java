@@ -14,16 +14,27 @@
 
 package com.google.sps.data;
 
-/** An item on a todo list. */
+/** An item on a comments list. */
 public final class Comment {
+  
+  private final long ID;
+  private final String COMMENT;
+  private final long TIMESTAMP;
+  private static long commentId = 0;
 
-  private final long id;
-  private final String comment;
-  private final long timestamp;
-
-  public Comment(long id, String comment, long timestamp) {
-    this.id = id;
-    this.comment = comment;
-    this.timestamp = timestamp;
+  public Comment(String comment) {
+    this.ID = commentId;
+    this.COMMENT = comment;
+    this.TIMESTAMP = System.currentTimeMillis();;
+    commentId++;
   }
+
+  public String getComment() {
+      return COMMENT;
+  }
+
+  public long getTimeStamp() {
+      return TIMESTAMP;
+  }
+
 }
