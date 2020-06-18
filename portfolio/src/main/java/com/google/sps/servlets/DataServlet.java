@@ -24,34 +24,48 @@ import java.util.ArrayList;
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
+  private ArrayList<String> comments = new ArrayList<>();
+  private static final String COMMENT_INPUT = "comment-input";
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    ArrayList<String> arr = generateArrLst();
-    String json = convertToJson(arr);
-    response.setContentType("application/json;");
+    String json = convertToJson(comments);
+    response.setContentType("text/json;");
     response.getWriter().println(json);
   }
 
-  private ArrayList<String> generateArrLst() {
-    ArrayList<String> arr = new ArrayList<>();
-    arr.add("It's vibrating!");
-    arr.add("Significant");
-    arr.add("So unnecessary");
-    return arr;
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    String comment = getParameter(request, COMMENT_INPUT, " ");
+    comments.add(comment);    
+    response.sendRedirect("/index.html");
   }
-
+    
+  /**
+   * @return the json conversion of comments list
+   */
   private String convertToJson(ArrayList<String> arr) {
     String json = "{";
-    
     for (int i = 0; i < arr.size(); i++) {
         json += "\"item" + i + "\": ";
         json += "\"" + arr.get(i) + "\"";
         if (i != arr.size() - 1) json += ", ";
     }
-
     json += "}";
 
     return json;
+  }
+
+  /**
+   * @return the request parameter, or the default value if the parameter
+   *         was not specified by the client
+   */
+  private String getParameter(HttpServletRequest request, String name, String defaultValue) {
+    String value = request.getParameter(name);
+    if (value == null) {
+      return defaultValue;
+    }
+    
+    return value;
   }
 }

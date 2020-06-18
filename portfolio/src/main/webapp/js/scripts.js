@@ -46,10 +46,9 @@
 
 async function getData() {
     const response = await fetch('/data');
-    const responseJson = await response.json();
-    console.log("Response: ", response);
-    
+    const responseJson = await response.json();  
     const responseLstElem = document.getElementById('greeting-container');
+    
     responseLstElem.innerHTML = '';
     for (let key of Object.keys(responseJson)) {
         responseLstElem.appendChild(
