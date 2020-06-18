@@ -16,7 +16,6 @@ package com.google.sps.data;
 
 /** An item on a comments list. */
 public final class Comment {
-  
   private final long ID;
   private final String COMMENT;
   private final long TIMESTAMP;
@@ -36,5 +35,4 @@ public final class Comment {
   public long getTimeStamp() {
       return TIMESTAMP;
   }
-
 }
