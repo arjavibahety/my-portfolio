@@ -14,14 +14,9 @@
 
 package com.google.sps.servlets;
 
-import com.google.appengine.api.datastore.DatastoreService;
-import com.google.appengine.api.datastore.DatastoreServiceFactory;
-import com.google.appengine.api.datastore.Entity;
-import com.google.appengine.api.datastore.PreparedQuery;
-import com.google.appengine.api.datastore.Query;
-import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.gson.Gson;
 import com.google.sps.data.Comment;
+import com.google.sps.data.CommentsManager;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,39 +29,20 @@ import java.util.ArrayList;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
   private static final String COMMENT_INPUT = "comment-input";
-  private static DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-  private static Gson gson = new Gson();
+  private static final CommentsManager COMMENTS_MANAGER = new CommentsManager();
+  private static final Gson GSON = new Gson();
   
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
-
-    PreparedQuery results = datastore.prepare(query);
-
-    List<Comment> comments = new ArrayList<>();
-    for (Entity entity : results.asIterable()) {
-      long id = entity.getKey().getId();
-      String comment = (String) entity.getProperty("comment");
-      long timestamp = (long) entity.getProperty("timestamp");
-
-      Comment commentObj = new Comment(id, comment, timestamp);
-      comments.add(commentObj);
-    }
-
+    List<Comment> comments = COMMENTS_MANAGER.getStoredComments();
     response.setContentType("application/json;");
-    response.getWriter().println(gson.toJson(comments));
+    response.getWriter().println(GSON.toJson(comments));
   }
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String comment = getParameter(request, COMMENT_INPUT, "");
-    long timestamp = System.currentTimeMillis();
-
-    Entity commentEntity = new Entity("Comment");
-    commentEntity.setProperty("comment", comment);
-    commentEntity.setProperty("timestamp", timestamp);
-
-    datastore.put(commentEntity);
+    COMMENTS_MANAGER.storeComment(new Comment(comment));
     response.sendRedirect("/index.html");
   }
 
@@ -81,4 +57,5 @@ public class DataServlet extends HttpServlet {
     }
     return value;
   }
+  
 }
