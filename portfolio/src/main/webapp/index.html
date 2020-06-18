@@ -26,6 +26,7 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
   </head>
+
   <body id="page-top" onload="getData()">
     <!-- Navigation-->
     <nav
@@ -41,7 +42,6 @@
               />
             </span>
       </a>
-      
       <button
         class="navbar-toggler"
         type="button"
@@ -79,14 +79,10 @@
                 Comments
             </a>
           </li>
-          <li class="nav-item">  
-            <a class="nav-link js-scroll-trigger" href="#comments">
-                Comments
-            </a>
-          </li>
         </ul>
       </div>
     </nav>
+
     <!-- Page Content-->
     <div class="container-fluid p-0">
       <!-- About-->
@@ -255,6 +251,7 @@
         </div>
       </section>
       <hr class="m-0" />
+
       <!-- Interests-->
       <section class="resume-section" id="interests">
         <div class="resume-section-content">
@@ -273,7 +270,6 @@
             don't need to refer to other's drawings :") Here are some of my
             latest drawings!
           </p>
-
           <div class="image-gallery">
             <div class="image-gallery-item">
               <img
@@ -300,7 +296,8 @@
         </div>
       </section>
       <hr class="m-0" />
-
+      
+      <!-- Comments-->
       <section class="resume-section" id="comments">
         <div class="resume-section-content">
           <form action="/data" method="POST">
@@ -311,9 +308,7 @@
             <input type="submit" />
           </form>
           <br />
-
           <div id="comments-container"></div>
-
         </div>
       </section>
       <hr class="m-0" />
