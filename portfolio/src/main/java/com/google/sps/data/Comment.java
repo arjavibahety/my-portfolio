@@ -24,7 +24,7 @@ public final class Comment {
   public Comment(String comment) {
     this.ID = commentId;
     this.COMMENT = comment;
-    this.TIMESTAMP = System.currentTimeMillis();;
+    this.TIMESTAMP = System.currentTimeMillis();
     commentId++;
   }
 
