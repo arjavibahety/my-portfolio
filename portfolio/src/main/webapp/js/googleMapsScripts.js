@@ -16,7 +16,7 @@
 function createMap() {
   const india = { name: 'India', lat: 25.3407, lng: 74.6313 };
   const singapore = { name: 'Singapore', lat: 1.3521, lng: 103.8198 };
-  const indonesia = { name: 'Indonesia', lat: 6.2088, lng: 106.8456 };
+  const indonesia = { name: 'Indonesia', lat: 0.7893, lng: 113.9213 };
   const malaysia = { name: 'Malaysia', lat: 4.2105, lng: 101.9758 };
   const uk = { name: 'UK', lat: 55.3781, lng: 3.4360 };
   const locations = [india, singapore, indonesia, malaysia, uk];
