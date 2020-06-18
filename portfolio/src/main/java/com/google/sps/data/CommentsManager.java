@@ -24,18 +24,18 @@ import java.util.ArrayList;
 
 /** An item on a comments list. */
 public final class CommentsManager {
-  private static final DatastoreService DATASTORE = DatastoreServiceFactory.getDatastoreService();
+  private static DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
   public void storeComment(Comment comment) {
     Entity commentEntity = new Entity("Comment");
     commentEntity.setProperty("comment", comment.getComment());
     commentEntity.setProperty("timestamp", comment.getTimeStamp());
-    DATASTORE.put(commentEntity);
+    datastore.put(commentEntity);
   }
 
   public ArrayList<Comment> getStoredComments() {
     Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
-    PreparedQuery results = DATASTORE.prepare(query);
+    PreparedQuery results = datastore.prepare(query);
     ArrayList<Comment> comments = new ArrayList<>();
 
     for (Entity entity : results.asIterable()) {

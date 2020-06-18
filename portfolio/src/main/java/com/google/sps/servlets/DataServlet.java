@@ -29,12 +29,12 @@ import java.util.ArrayList;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
   private static final String COMMENT_INPUT = "comment-input";
-  private static final CommentsManager COMMENTS_MANAGER = new CommentsManager();
   private static final Gson GSON = new Gson();
+  private static CommentsManager commentsManager = new CommentsManager();
   
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    List<Comment> comments = COMMENTS_MANAGER.getStoredComments();
+    List<Comment> comments = commentsManager.getStoredComments();
     response.setContentType("application/json;");
     response.getWriter().println(GSON.toJson(comments));
   }
@@ -42,7 +42,7 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String comment = getParameter(request, COMMENT_INPUT, "");
-    COMMENTS_MANAGER.storeComment(new Comment(comment));
+    commentsManager.storeComment(new Comment(comment));
     response.sendRedirect("/index.html");
   }
 
