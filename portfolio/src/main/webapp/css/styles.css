@@ -10566,7 +10566,7 @@ section.resume-section .resume-section-content {
   }
 }
 
-#map {
+#map-container {
   border: thin solid black;
   height: 500px;
   width: 100%;

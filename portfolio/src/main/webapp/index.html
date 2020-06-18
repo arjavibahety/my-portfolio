@@ -15,6 +15,12 @@
       src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"
       crossorigin="anonymous"
     ></script>
+    <!-- Google maps -->
+    <script type = 'text/javascript' src="js/config.js"></script>
+    <script src="js/googleMapsScripts.js"></script>
+    <script>
+        loadGoogleMapsScript();
+    </script>
     <!-- Google fonts-->
     <link
       href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700"
@@ -29,7 +35,7 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
   </head>
-  <body id="page-top" onload="getData()">
+  <body id="page-top" onload="getData(); createMap();">
     <!-- Navigation-->
     <nav
       class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top"
@@ -283,7 +289,10 @@
                 alt=""
               />
             </div>
-          </ul>
+          </div>
+          
+          <div id="map"></div>
+
         </div>
       </section>
       <hr class="m-0" />
