@@ -46,7 +46,7 @@
 
 async function getData() {
     const response = await fetch('/data');
-    const responseJson = await response.json();    
+    const responseJson = await response.json();  
     const responseLstElem = document.getElementById('greeting-container');
     
     responseLstElem.innerHTML = '';

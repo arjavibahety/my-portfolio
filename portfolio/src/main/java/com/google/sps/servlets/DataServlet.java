@@ -29,8 +29,9 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    response.setContentType("text/html;");
-    response.getWriter().println(comments);
+    String json = convertToJson(comments);
+    response.setContentType("text/json;");
+    response.getWriter().println(json);
   }
 
   @Override
@@ -38,6 +39,23 @@ public class DataServlet extends HttpServlet {
     String comment = getParameter(request, COMMENT_INPUT, " ");
     comments.add(comment);    
     response.sendRedirect("/index.html");
+  }
+    
+  /**
+   * @return the json conversion of comments list
+   */
+  private String convertToJson(ArrayList<String> arr) {
+    String json = "{";
+        
+    for (int i = 0; i < arr.size(); i++) {
+        json += "\"item" + i + "\": ";
+        json += "\"" + arr.get(i) + "\"";
+        if (i != arr.size() - 1) json += ", ";
+    }
+
+    json += "}";
+
+    return json;
   }
 
   /**
