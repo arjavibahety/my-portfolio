@@ -46,13 +46,19 @@
 
 async function getData() {
     const response = await fetch('/data');
-    const responseJson = await response.json();
-    const commentsContainer = document.getElementById("comments-container");
+    const responseJson = await response.json();  
+    const responseLstElem = document.getElementById('comments-container');
     
-    for (let i = 0; i < responseJson.length; i++) {
-        const newComment = document.createElement('p');
-        newComment.innerHTML = responseJson[i].comment;
-        commentsContainer.appendChild(newComment)
+    responseLstElem.innerHTML = '';
+    for (let key of Object.keys(responseJson)) {
+        responseLstElem.appendChild(
+        createParaElement(responseJson[key]['COMMENT']));
     }
+}
 
+/** Creates an <p> element containing text. */
+function createParaElement(text) {
+  const paraElement = document.createElement('p');
+  paraElement.innerText = text;
+  return paraElement;
 }
