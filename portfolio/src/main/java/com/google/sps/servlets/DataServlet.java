@@ -22,7 +22,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
 import java.util.ArrayList;
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
@@ -45,7 +44,7 @@ public class DataServlet extends HttpServlet {
     commentsManager.storeComment(new Comment(comment));
     response.sendRedirect("/index.html");
   }
-
+  
   /**
    * @return the request parameter, or the default value if the parameter
    *         was not specified by the client
