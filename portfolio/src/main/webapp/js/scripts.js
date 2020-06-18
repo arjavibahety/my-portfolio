@@ -46,6 +46,20 @@
 
 async function getData() {
     const response = await fetch('/data');
-    const responseText = await response.text();
-    document.getElementById('greeting-container').innerHTML = responseText;
+    const responseJson = await response.json();
+    console.log("Response: ", response);
+    
+    const responseLstElem = document.getElementById('greeting-container');
+    responseLstElem.innerHTML = '';
+    for (let key of Object.keys(responseJson)) {
+        responseLstElem.appendChild(
+        createParaElement(responseJson[key]));
+    }
+}
+
+/** Creates an <p> element containing text. */
+function createParaElement(text) {
+  const paraElement = document.createElement('p');
+  paraElement.innerText = text;
+  return paraElement;
 }
