@@ -43,13 +43,11 @@ public class DataServlet extends HttpServlet {
 
   private String convertToJson(ArrayList<String> arr) {
     String json = "{";
-    
     for (int i = 0; i < arr.size(); i++) {
         json += "\"item" + i + "\": ";
         json += "\"" + arr.get(i) + "\"";
         if (i != arr.size() - 1) json += ", ";
     }
-
     json += "}";
 
     return json;

@@ -100,7 +100,7 @@ function createMap() {
       elementType: 'labels.text.stroke',
       stylers: [{ color: '#17263c' }]
     }
-  ]
+  ];
 
   const map = new google.maps.Map(
     document.getElementById('map-container'), {
