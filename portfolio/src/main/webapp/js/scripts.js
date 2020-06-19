@@ -52,7 +52,7 @@ async function getData() {
     commentsContainerElement.innerHTML = '';
     for (let key of Object.keys(responseJson)) {
         commentsContainerElement.appendChild(
-          createParagraphElement(responseJson[key]['COMMENT']));
+          createParagraphElement(responseJson[key]['comment']));
     }
 }
 
