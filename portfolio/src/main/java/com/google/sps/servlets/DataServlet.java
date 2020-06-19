@@ -28,14 +28,14 @@ import java.util.List;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
   private static final String COMMENT_INPUT = "comment-input";
-  private static final Gson GSON = new Gson();
+  private static Gson gson = new Gson();
   private static CommentsManager commentsManager = new CommentsManager();
   
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     List<Comment> comments = commentsManager.getStoredComments();
     response.setContentType("application/json;");
-    response.getWriter().println(GSON.toJson(comments));
+    response.getWriter().println(gson.toJson(comments));
   }
 
   @Override

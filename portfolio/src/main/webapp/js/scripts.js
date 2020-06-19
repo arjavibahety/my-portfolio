@@ -47,18 +47,18 @@
 async function getData() {
     const response = await fetch('/data');
     const responseJson = await response.json();  
-    const responseLstElem = document.getElementById('comments-container');
+    const commentsContainerElement = document.getElementById('comments-container');
     
-    responseLstElem.innerHTML = '';
+    commentsContainerElement.innerHTML = '';
     for (let key of Object.keys(responseJson)) {
-        responseLstElem.appendChild(
-          createParaElement(responseJson[key]['COMMENT']));
+        commentsContainerElement.appendChild(
+          createParagraphElement(responseJson[key]['COMMENT']));
     }
 }
 
 /** Creates an <p> element containing text. */
-function createParaElement(text) {
-  const paraElement = document.createElement('p');
-  paraElement.innerText = text;
-  return paraElement;
+function createParagraphElement(text) {
+  const paragraphElement = document.createElement('p');
+  paragraphElement.innerText = text;
+  return paragraphElement;
 }

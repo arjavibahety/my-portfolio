@@ -16,23 +16,23 @@ package com.google.sps.data;
 
 /** An item on a comments list. */
 public final class Comment {
-  private final long ID;
-  private final String COMMENT;
-  private final long TIMESTAMP;
+  private long id;
+  private String comment;
+  private long timestamp;
   private static long commentId = 0;
 
   public Comment(String comment) {
-    this.ID = commentId;
-    this.COMMENT = comment;
-    this.TIMESTAMP = System.currentTimeMillis();
+    this.id = commentId;
+    this.comment = comment;
+    this.timestamp = System.currentTimeMillis();
     commentId++;
   }
 
   public String getComment() {
-      return COMMENT;
+      return comment;
   }
 
   public long getTimeStamp() {
-      return TIMESTAMP;
+      return timestamp;
   }
 }
