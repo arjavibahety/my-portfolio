@@ -19,13 +19,13 @@ public final class Comment {
   private long id;
   private String comment;
   private long timestamp;
-  private static long commentId = 0;
+  private static long nextCommentId = 0;
 
   public Comment(String comment) {
-    this.id = commentId;
+    this.id = nextCommentId;
     this.comment = comment;
     this.timestamp = System.currentTimeMillis();
-    commentId++;
+    nextCommentId++;
   }
 
   public String getComment() {
