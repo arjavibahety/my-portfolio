@@ -15,6 +15,7 @@
 package com.google.sps;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.ArrayList;
 import java.util.PriorityQueue;
 import java.util.Set;
@@ -31,16 +32,8 @@ public final class FindMeetingQuery {
     return result;
   }
 
-  private boolean eventHasRequestAttendees(Collection<String> requestAttendees, Event event) {
-    Set<String> eventAttendees = event.getAttendees();
-
-    for (String requestAttendee : requestAttendees) {
-      if (eventAttendees.contains(requestAttendee)) {
-        return true;
-      }
-    }
-
-    return false;
+  private boolean hasCommonAttendees(Collection<String> requestAttendees, Collection<String> eventAttendees) {
+    return !Collections.disjoint(requestAttendees, eventAttendees);
   }
   
   private PriorityQueue<TimeRange> getBusyTimeRanges(Collection<Event> events, MeetingRequest request) {
@@ -48,7 +41,8 @@ public final class FindMeetingQuery {
     Collection<String> requestAttendees = request.getAttendees();
 
     for (Event event : events) {
-      if (eventHasRequestAttendees(requestAttendees, event)) {
+        Collection<String> eventAttendees = event.getAttendees();
+      if (hasCommonAttendees(requestAttendees, eventAttendees)) {
         TimeRange eventTimeRange = event.getWhen();
         busyTimeRanges.add(eventTimeRange); 
       }
@@ -85,12 +79,13 @@ public final class FindMeetingQuery {
 
   private Collection<TimeRange> getAvailableTimeRanges(ArrayList<TimeRange> combinedBusyTimeRanges, MeetingRequest request) {
     ArrayList<TimeRange> availableTimeRanges = new ArrayList<>();
-    int endOfLastBusyTimeRange = TimeRange.START_OF_DAY;
-
+    
     if (combinedBusyTimeRanges.size() == 0) {
       availableTimeRanges.add(TimeRange.WHOLE_DAY);
       return availableTimeRanges;
     }
+    
+    int endOfLastBusyTimeRange = TimeRange.START_OF_DAY;
 
     for (TimeRange busyTimeRange : combinedBusyTimeRanges) {
       int start = busyTimeRange.start();
