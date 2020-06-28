@@ -23,7 +23,7 @@ import java.util.Set;
 public final class FindMeetingQuery {
   public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) {
     if (request.getDuration() > TimeRange.WHOLE_DAY.duration()) {
-      return new ArrayList<>();
+      return Collections.emptyList();
     } 
     
     PriorityQueue<TimeRange> busyTimeRanges = getBusyTimeRanges(events, request);
@@ -32,10 +32,6 @@ public final class FindMeetingQuery {
     return result;
   }
 
-  private boolean hasCommonAttendees(Collection<String> requestAttendees, Collection<String> eventAttendees) {
-    return !Collections.disjoint(requestAttendees, eventAttendees);
-  }
-  
   private PriorityQueue<TimeRange> getBusyTimeRanges(Collection<Event> events, MeetingRequest request) {
     PriorityQueue<TimeRange> busyTimeRanges = new PriorityQueue<>(TimeRange.ORDER_BY_START);
     Collection<String> requestAttendees = request.getAttendees();
@@ -51,6 +47,10 @@ public final class FindMeetingQuery {
     return busyTimeRanges;
   }
 
+  private boolean hasCommonAttendees(Collection<String> requestAttendees, Collection<String> eventAttendees) {
+    return !Collections.disjoint(requestAttendees, eventAttendees);
+  }
+  
   private ArrayList<TimeRange> getCombinedBusyTimeRanges(PriorityQueue<TimeRange> busyTimeRanges) {
     ArrayList<TimeRange> combinedBusyTimeRanges = new ArrayList<>();
 
@@ -69,12 +69,6 @@ public final class FindMeetingQuery {
     }
 
     return combinedBusyTimeRanges;
-  }
-
-  private void processNewTimeRange(ArrayList<TimeRange> availableTimeRanges, TimeRange newTimeRange, MeetingRequest request) {
-    if (newTimeRange.duration() >= request.getDuration()) {
-      availableTimeRanges.add(newTimeRange);
-    }
   }
 
   private Collection<TimeRange> getAvailableTimeRanges(ArrayList<TimeRange> combinedBusyTimeRanges, MeetingRequest request) {
@@ -97,5 +91,11 @@ public final class FindMeetingQuery {
     TimeRange newTimeRange = TimeRange.fromStartEnd(endOfLastBusyTimeRange, TimeRange.END_OF_DAY, true);
     processNewTimeRange(availableTimeRanges, newTimeRange, request);
     return availableTimeRanges;
+  }
+
+  private void processNewTimeRange(ArrayList<TimeRange> availableTimeRanges, TimeRange newTimeRange, MeetingRequest request) {
+    if (newTimeRange.duration() >= request.getDuration()) {
+      availableTimeRanges.add(newTimeRange);
+    }
   }
 }
